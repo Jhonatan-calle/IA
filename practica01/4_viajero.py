@@ -15,14 +15,14 @@ def distancia_total(individual):
 
 # --- Crear clases ---
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
-creator.create("Individual", list, fitness=creator.FitnessMin)
+creator.create("Individual", list, fitness=creator.FitnessMin)# type: ignore
 
 toolbox = base.Toolbox()
 
 # --- Generadores ---
 toolbox.register("indices", random.sample, range(len(cities)), len(cities))
-toolbox.register("individual", tools.initIterate, creator.Individual, toolbox.indices)
-toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+toolbox.register("individual", tools.initIterate, creator.Individual, toolbox.indices)# type: ignore
+toolbox.register("population", tools.initRepeat, list, toolbox.individual)# type: ignore
 
 # --- Operadores ---
 toolbox.register("evaluate", distancia_total)
@@ -38,7 +38,7 @@ stats.register("avg", lambda x: sum(x)/len(x))
 # --- Algoritmo ---
 def main():
     random.seed(42)
-    pop = toolbox.population(n=50)
+    pop = toolbox.population(n=50)# type: ignore
     hof = tools.HallOfFame(1)  # mejor individuo global
 
     algorithms.eaSimple(pop, toolbox, cxpb=0.7, mutpb=0.2, ngen=100,

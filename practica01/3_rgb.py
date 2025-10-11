@@ -4,13 +4,13 @@ import random
 from deap import base, creator, tools, algorithms
 
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
-creator.create("Individual", list, fitness=creator.FitnessMin)
+creator.create("Individual", list, fitness=creator.FitnessMin)# type: ignore
 
 toolbox = base.Toolbox()
 
 toolbox.register("attr_int",random.randint,0,255)
-toolbox.register("individual",tools.initRepeat,creator.Individual,toolbox.attr_int,3)
-toolbox.register("population",tools.initRepeat,list,toolbox.individual)
+toolbox.register("individual",tools.initRepeat,creator.Individual,toolbox.attr_int,3)# type: ignore
+toolbox.register("population",tools.initRepeat,list,toolbox.individual)# type: ignore
 
 
 def distancia_euclidiana(Individual):
@@ -32,7 +32,7 @@ stats.register("best", lambda inds: max(inds, key=lambda ind: ind.fitness.values
 def main():
     random.seed(42)
     
-    pop = toolbox.population(n=50)
+    pop = toolbox.population(n=50)# type: ignore
     
     algorithms.eaSimple(pop, toolbox, cxpb=0.5, mutpb=0.1, ngen=50, 
                         stats=stats, verbose=True)

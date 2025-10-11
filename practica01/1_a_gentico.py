@@ -2,8 +2,8 @@ import random
 # ---------------------------
 # Parámetros
 # ---------------------------
-POP_SIZE = 20 # Tamaño de la población
-GENS = 30 # Número de generaciones
+POP_SIZE = 50 # Tamaño de la población
+GENS = 20 # Número de generaciones
 CXPB = 0.8 # Probabilidad de cruce
 MUTPB = 0.05 # Probabilidad de mutación
 GENOME_LENGTH = 20 # Longitud de cada individuo (número de bits)
@@ -16,9 +16,10 @@ def fitness(individual):
 # Crear población
 # ---------------------------
 def create_individual():
-    return [random.randint(0, 1) for _ in range(GENOME_LENGTH)]
+    return random.choices([0, 1], weights=[0.9, 0.1], k=GENOME_LENGTH)
 def create_population():
     return [create_individual() for _ in range(POP_SIZE)]
+
 # ---------------------------
 # Operadores genéticos
 # ---------------------------
