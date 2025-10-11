@@ -1,0 +1,8 @@
+ejer 1
+  a)
+    TP = los 30 pasientes que el clasificador detecto que tenian la enfermedad y y realmente la tenian 
+    TN = son los 150 pasientes que el clasificador no detectola enfermedad y realmente 
+    FP = son los 20 pasientes los cuales el clasificador detecto la enfermedad y realmente no la tenian 
+    FN = son los 10 pasientes a los que el clasdificador no detecto la enfermedad pero si la tenian 
+
+   

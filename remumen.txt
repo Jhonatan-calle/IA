@@ -1,0 +1,37 @@
+----TEO 1 GENETICOS
+
+  Genotipo / Cromosoma 
+    El el individuo de una población, un cromosoma puede expresarse como una cadena binaria, donde cada bit representa un gen.
+
+  Poblacion: 
+    cojunto de individuos (cromosomas)
+
+  Aleleo:
+    Un alelo es el valor específico que toma un gen.
+
+  Metodos de selecion mas comunes
+    -selecion por ruleta (FPS): cada individuo tiene una probabilidad de ser elegido proporcional a su aptitud, como si ocupara una porción de una ruleta cuyo tamaño depende de su valor de aptitud.
+    -En el muestreo universal estocástico (SUS): se hace un solo giro de la ruleta y se seleccionan varios individuos a la vez usando puntos de selección equidistantes.
+    -Escalado de aptitud: transforma los valores originales de aptitud mediante una función lineal tness escalada = a * tness + b para ajustarlos a un rango deseado.
+    -En la selección por torneo, se eligen al azar dos o más individuos de la población, y el que tenga la mayor aptitud es el que resulta seleccionado.
+
+  Metodos de crossover mas usados 
+    -En la combinación de un punto, se intercambian los genes a la derecha de un punto seleccionado al azar entre dos padres para crear dos descendientes con información genética combinada.
+    -En la combinación de dos o más (k) puntos, se intercambian los genes situados entre dos o más puntos aleatorios seleccionados en los cromosomas de ambos padres.
+    -En la combinación uniforme, cada gen del descendiente se elige de forma independiente, seleccionando al azar uno de los padres. Cuando la probabilidad es del 50%, ambos padres tienen la misma posibilidad de aportar cada gen.
+
+  Algoritmo genético multiobjetivo (MOGA)
+    es una extensión de los algoritmos genéticos tradicionales diseñada para optimizar varias funciones objetivo simultáneamente, que suelen estar en con icto entre sí. Ejemplo típico: minimizar el costo y maximizar la calidad de un producto.
+
+  Una solución A domina a otra solución B si:
+    A es mejor o igual que B en todos los objetivos. A es estrictamente mejor que B en al menos un objetivo. Si ninguna de las dos domina a la otra, se dice que son no dominadas.
+
+  Frente de Pareto:
+    es el conjunto de soluciones no dominadas en el espacio de búsqueda. En la práctica, el objetivo de un MOGA es aproximar este frente para ofrecer al decisor un conjunto de soluciones con diferentes compensaciones.
+
+  Algoritmo Non-dominated Sorting Genetic II (NSGA-2)
+    El NSGA-II busca optimizar varios objetivos a la vez Se ordenan los individuos en niveles de dominancia:
+      Frente 1: individuos no dominados por ningún otro (óptimos de Pareto actuales).
+      Frente 2: dominados solo por los del Frente 1.
+      Frente 3, y así sucesivamente.
+    Dentro de cada frente, se mide la densidad local de soluciones vecinas. Sirve para mantener diversidad: se prefieren soluciones más aisladas (no amontonadas).
