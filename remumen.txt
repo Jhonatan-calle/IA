@@ -248,3 +248,23 @@
 
       Post-pruning (poda posterior): 
         primero se entrena un árbol grande y luego se recortan ramas evaluando el impacto en un conjunto de validación o mediante métricas como error o complejidad.
+
+
+------TEO 6 Ensambles 
+  Un ensemble es una técnica en machine learning supervisado donde se combinan múltiples modelos para formar un modelo más robusto
+
+  Bagging (Bootstrap Aggregating): 
+    Entrena varios modelos en paralelo sobre subconjuntos aleatorios de los datos. Luego combina sus predicciones (votación en clasificación, promedio en regresión). Ejemplo: Random Forests (construye muchos árboles de decisión).
+
+  Bagging -random forest 
+    Random Forest es un algoritmo de ensemble basado en bagging que combina múltiples árboles de decisión para mejorar la precisión y la capacidad de generalización. Fue propuesto por Leo Breiman en 2001 como una extensión del bagging, con la innovación de agregar aleatoriedad en la selección de atributos en cada división del árbol.
+    
+  Boosting:  
+    Boosting es una técnica que combina múltiples modelos débiles (weak learners) para formar un modelo fuerte (strong learner). La idea es entrenar de manera secuencial a varios modelos, donde cada modelo nuevo se enfoca en corregir los errores cometidos por los anteriores. En lugar de entrenar todos los modelos en paralelo (como en bagging), los modelos se construyen uno tras otro ajustando la importancia de las instancias según la di cultad de clasi carlas.
+
+  Stacking (Stacked Generalization): 
+    Combina diferentes tipos de modelos (heterogéneos). Usa un meta-modelo que aprende a integrar sus predicciones. Ejemplo: usar k-NN + SVM + árbol de decisión, y luego una regresión logística para combinar. A diferencia de Bagging o Boosting, que combinan modelos de la misma familia.
+
+  Voting: 
+    Se seleccionan diferentes tipos de modelos con buen desempeño. Se entrenan cada uno de los correspondientes modelos. Dada una consulta, se realiza la misma en cada modelo entrenado. Dadas las respuestas se somete a un proceso de votación. Para problemas de clasi cación se utiliza mayority, para uno de regresión, generalmente el promedio de los resultados. También se puede utilizar una soft voting utilizando probabilidades
+
