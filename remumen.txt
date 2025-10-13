@@ -196,3 +196,55 @@
 
         función de costo de entropía cruzada (cross-entropy loss):
           funcion de costo de entranamiento en modelo softmax el cual debe asignar alta probabilidad a la clase correcta y baja probabilidad a las Además. Como la función de costo de entropía cruzada (cross-entropy loss) es diferenciable, para realizar el entrenamiento podemos aplicar la técnica del descenso del gradiente para ir ajustando los pesos asociados a cada clase.
+
+
+------TEO 5 clasificación no parametrica
+|
+  En machine learning, un modelo no paramétrico es aquel que no asume una forma funcional ja para los datos (como una recta o un polinomio). Además, en general, la complejidad del modelo crece con la cantidad de datos.
+  
+  k-Nearest Neighbors (k-NN): 
+    Predice según los vecinos más cercanos en el espacio de características. almacena los datos de entrenamiento para buscar los k vecinos más cercanos al nuevo punto de entrada para predecir su valor.
+    no es necesario entrenamiento alguno. Si se deben tener en cuenta varios hiperparámetros:
+    • Cuántos vecinos se van a tener en cuenta, usualmente una cantidad impar: algunas heuritiscas son elijir k como la raiz del nro de datos de entranamiento pero la mejor opcion segun la teoria es utilizar cross-validation para encontrar el k que maximiza la presicion
+    • Cómo medimos la distancia de proximidad
+    • Cómo determinamos el valor a predecir
+  
+  cuando se estan compararndo valores cuyas escalas son diferentes (por ejemplo edad y kilomentos) es combinente escalar las maginitudes para que todos tengan como media 0 y desviacion estardar 1
+
+  Para determinar el valor a predecir (clase) el método más utilizado es el de votación mayoritaria entre las clases de los vecinos.
+
+  Maquinas de soporte vectorial (SVM):
+    La idea de SVM es tratar de encontrar cuál es la mejor forma de partir (separar) clases de valores para poder clasificarlos
+
+    SVM - Soft Margin:
+      El soft margin permite que algunos puntos estén mal clasificados o dentro del margen, con el objetivo de obtener un modelo que generalice mejor. Esto se logra introduciendo slack variables, que miden cuántos puntos “violan” la separación correcta.
+    
+    Ventajas
+      • Buen rendimiento en alta dimensión: Funciona muy bien con datos de muchas variables,por ejemplo imágenes.
+      • Manejo de relaciones no lineales: Gracias a los kernels (RBF, polinómico).
+      • Robustez frente a outliers: El soft margin permite ignorar ciertos puntos atípicos.
+      • Clasi cación binaria y multiclase: Útil tanto para dos clases como para múltiples clases.
+
+    Desventajas
+      • Entrenamiento lento: Muy costoso en datasets grandes.
+      • Di cultad en la selección de parámetros: Elegir kernel y ajustar hiperparámetros suele ser complejo.
+      • Sensibilidad al ruido: Pierde rendimiento con datos ruidosos o clases solapadas.
+      • Poca interpretabilidad: Difícil de entender en espacios de alta dimensión.
+      • Necesidad de escalado: Requiere normalizar/estandarizar los datos para un buen desempeño.
+
+  Árboles de decisión (DT):
+    Su objetivo es construir un modelo que prediga el valor de una variable objetivo mediante reglas de decisión simples derivadas de las características de los datos.
+
+    ¿ Cómo podemos construir (aprender) un DT ?... de una forma optimal. La construcción del mejor DT (más e ciente) es un problema NP completo.
+
+    Índice Gini (para clasificación): 
+      El coe ciente gini mide la “pureza” de un nodo. Un nodo se dice “puro” (gini=0)si contiene todas muestras del mismo tipo
+
+    Pruning:
+      La poda es una técnica para reducir su complejidad y evitar el overfitting. Un árbol muy profundo puede ajustarse demasiado a los datos de entrenamiento capturando ruido en lugar de patrones generales. Pruning consiste en eliminar ramas o nodos que aportan poca mejora en la predicción, logrando así un modelo más simple, generalizable y eficiente.
+
+      Pre-pruning (poda temprana): 
+        se detiene el crecimiento del árbol antes de que alcance su máxima profundidad, aplicando criterios como un número mínimo de muestras por nodo o una ganancia mínima de información.
+
+      Post-pruning (poda posterior): 
+        primero se entrena un árbol grande y luego se recortan ramas evaluando el impacto en un conjunto de validación o mediante métricas como error o complejidad.
