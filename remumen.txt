@@ -21,7 +21,7 @@
     -En la combinación uniforme, cada gen del descendiente se elige de forma independiente, seleccionando al azar uno de los padres. Cuando la probabilidad es del 50%, ambos padres tienen la misma posibilidad de aportar cada gen.
 
   Algoritmo genético multiobjetivo (MOGA)
-    es una extensión de los algoritmos genéticos tradicionales diseñada para optimizar varias funciones objetivo simultáneamente, que suelen estar en con icto entre sí. Ejemplo típico: minimizar el costo y maximizar la calidad de un producto.
+    es una extensión de los algoritmos genéticos tradicionales diseñada para optimizar varias funciones objetivo simultáneamente, que suelen estar en conflicto entre sí. Ejemplo típico: minimizar el costo y maximizar la calidad de un producto.
 
   Una solución A domina a otra solución B si:
     A es mejor o igual que B en todos los objetivos. A es estrictamente mejor que B en al menos un objetivo. Si ninguna de las dos domina a la otra, se dice que son no dominadas.
@@ -35,3 +35,74 @@
       Frente 2: dominados solo por los del Frente 1.
       Frente 3, y así sucesivamente.
     Dentro de cada frente, se mide la densidad local de soluciones vecinas. Sirve para mantener diversidad: se prefieren soluciones más aisladas (no amontonadas).
+
+
+----TEO 2 REGRECION
+
+  Distintos tipos de aprendizaje automático:
+    Aprendizaje supervisado:
+    El algoritmo recibe un conjunto de entrenamiento con las respuestas correctas y aprende a generalizar para responder correctamente a nuevas entradas.
+
+    Aprendizaje no supervisado:
+      No se proporcionan respuestas correctas. El algoritmo busca similitudes entre los datos para agruparlos.
+
+    Aprendizaje por refuerzo (reinforcing):
+      El algoritmo sabe si su respuesta fue correcta o no, pero no cómo mejorarla. Aprende explorando distintas opciones.
+
+    Aprendizaje evolutivo:
+      La evolución biológica puede interpretarse como un proceso de aprendizaje (aptitud de adaptación). Podemos modelar este proceso en una computadora usando el concepto de aptitud, que representa una puntuación que indica qué tan buena es una solución actual
+
+  Problemas de clasificación:
+    La salida del algoritmo es un valor tomado de un conjunto de finito de valores
+ 
+  Problemas de predicción (regresión):
+    La salida es un número entero o real
+
+  Subajuste (Underfitting):
+    Modelo es demasiado simple para captar los patrones de los datos.
+
+  Sobreajuste (Overfitting):
+    cuando el modelo aprende excesivamente de los datos de entrenamiento, incluyendo el ruido o las particularidades específicas, y por eso no generaliza bien a nuevos dato
+
+  Medicion de calidad: 
+    en problemas de clasificación se utilizan métricas como la precisión (accuracy), la sensibilidad (recall) o F1-Score que tiene en cuenta ambas anteriores. 
+    En cambio, en problemas de regresión (predicción), se aplican métricas como el error absoluto medio (MAE) o el error cuadrático medio (MSE), que indican qué tan lejos están las predicciones de los valores reales
+
+  Validación cruzada (cross-validation):
+    Tecnica de particion de datos durante el desarrollo para cuando se dispone de pocos datos o para fortalecer la evaluación. La variante más simple (k-fold cross-validation), propone dividir los datos en k subconjuntos (folds). Se entrena el modelo k veces utilizando k – 1 folds para entrenamiento y el restante para prueba. Al final, se promedian los resultados.
+
+  Costo computacioneas Regresion linean generalizado  = o(nm**2 + m**3) donde n son instancias y m caracteristicas lo cual lo vuelve no opcion no viable en un modelo mediano 
+
+  Una alternativa es usar el gradiente de la funcion de costo y ir buscando el minimo iterativamente. Al no ser necesario calucalr la inversa de la matriz se reduce mucho la complejidad. pero esta solucion da una solucion aproximada que depende del learning rate y la de la cantidad de iteraciones que definamos
+
+  Regresion polinomial: 
+    La idea para poder ajustar modelos polinomiales es agregar más datos (características) con el valor de las características originales elevados al polinomio correspondiente. Luego buscamos, mediante la técnica de regresión lineal el modelo que mejor ajuste estos datos.
+
+  Curvas de aprendizaje:
+    Una manera de evaluar la calidad de nuestra función hipótesis (modelo aprendido) es mediante la denominadas curvas de aprendizaje. Estas curvas representan gráficamente el error mínimo cuadrado (RMSE) contrastándolo entre el conjunto de datos de entrenamiento y el de validación.
+
+  Sesgo (Bias): 
+    Esta parte del error de generalización se debe a suposiciones incorrectas, como asumir que los datos son lineales cuando en realidad son cuadráticos. Un modelo con alto sesgo probablemente presentará underfitting en los datos de entrenamiento.
+
+  Varianza (Variance): 
+    Esta parte se debe a la excesiva sensibilidad del modelo ante pequeñas variaciones en los datos de entrenamiento. Un modelo con muchos grados de libertad seguramente tendrá alta varianza y, por lo tanto, overfitting.
+
+  Error irreducible (Irreducible error):
+    Esta parte se debe al ruido inherente de los datos. La única manera de reducir este error es sanitizar los datos (por ejemplo, eliminando valores atípicos).
+
+  En general, aumentar la complejidad de un modelo suele incrementar su varianza y reducir su sesgo. Reducir la complejidad tiende a aumentar el sesgo y disminuir la varianza.
+
+  Regularizacion
+    Una buena manera de reducir el overfitting es mediante la regularización del modelo, es decir,  imponerle restricciones. Una forma sencilla de regularizar un modelo polinómico es reducir el número de grados del polinomio. La regularización se logra normalmente restringiendo los pesos del modelo:
+
+    Ridge Regression: 
+      Penaliza la suma de los cuadrados de los pesos del modelo. Fórmula de penalización. Ridge suele ser una buena opción por defecto
+
+    Lasso Regression (Least Absolute Shrinkage and Selection Operator) : 
+      Penaliza la suma de los valores absolutos de los pesos. Si se sospecha que pocas características son útiles, se prefiere Lasso o Elastic Net, ya que reducen los pesos de las características innecesarias a cero.
+
+    Elastic Net Regression:
+      Técnica de regularización que combina Ridge y Lasso. suele ser preferible respecto Lasso. Lasso NO suele funcionar bien cuando el número de características es mayor al número de instancias de entrenamiento, o cuando hay una correlación fuerte entre algunas características
+
+  Finalización Temprana (Early Stopping):
+    Cuando el entrenamiento es iterativo (Estocástico por Gradiente), el modelo que da mejores resultados en el conjunto de validación puede aparecer en iteraciones intermedias durante el entrenamiento. Esto se debe a que en las últimas iteraciones se suele hacer overfitting sobre el conjunto de entrenamiento. Early stopping consiste en guardar el modelo con mejores resultados contrastados con el conjunto de datos de validación.

@@ -9,6 +9,7 @@ X = np.column_stack((np.ones_like(x),x))
 Y = np.array([y])
 Y = Y.T
 
+#Ecuacion normal
 coef = np.linalg.inv(X.T @ X) @ X.T @ Y
 
 # Definir la función lineal

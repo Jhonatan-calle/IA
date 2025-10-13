@@ -6,10 +6,10 @@ np.random.seed(42)
 x = np.linspace(0, 10, 10)
 e = np.random.normal(0, 1, size=x.shape)
 y = 3 * x + 2 + e
+X = np.column_stack((np.ones_like(x), x))  # (m,2)
 Y = y.reshape(-1, 1)  # (m,1)
 
 # --- Ecuación normal ---
-X = np.column_stack((np.ones_like(x), x))  # (m,2)
 coef_normal = np.linalg.inv(X.T @ X) @ X.T @ Y
 coef_normal = coef_normal.flatten()
 
