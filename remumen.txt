@@ -106,3 +106,93 @@
 
   Finalización Temprana (Early Stopping):
     Cuando el entrenamiento es iterativo (Estocástico por Gradiente), el modelo que da mejores resultados en el conjunto de validación puede aparecer en iteraciones intermedias durante el entrenamiento. Esto se debe a que en las últimas iteraciones se suele hacer overfitting sobre el conjunto de entrenamiento. Early stopping consiste en guardar el modelo con mejores resultados contrastados con el conjunto de datos de validación.
+
+
+------TEO 3 Datos
+
+  Proceso de modelado y utilizacion 
+    1. Problem Definition: 
+      Definir claramente qué problema se quiere resolver, los objetivos y las métricas a utilizar.
+    2. Data Collection: 
+      Obtener los datos necesarios desde las fuentes disponibles.
+    3. Data Cleaning and Preprocessing: 
+      Corregir errores, manejar valores faltantes, normalizar y transformar los datos para que el modelo los pueda usar.
+    4. Exploratory Data Analysis: 
+      Analizar visual y estadísticamente los datos para entender patrones,tendencias y posibles problemas.
+    5. Feature Engineering and Selection: 
+      Crear nuevas características relevantes y seleccionar las más útiles para mejorar el rendimiento del modelo.
+    6. Model Selection: 
+      Elegir el tipo de modelo que probablemente funcione mejor según el problema y los datos.
+    7. Model Training: 
+      Entrenar el modelo con los datos de entrenamiento para que aprenda patrones.
+    8. Model Evaluation and Tuning: 
+      Evaluar el rendimiento en datos de prueba y ajustar hiperparámetrospara optimizarlo.
+    9. Model Deployment and Maintenance: 
+      Poner el modelo en producción para que empiece a usarse.
+
+
+------TEO 4 clasificación
+
+  La clasificación es una tarea de aprendizaje supervisado en la que un modelo aprende a asignar una etiqueta o categoría a una entrada, basándose en ejemplos previos con etiquetas conocidas. Estas etiquetas o categorías deben ser discretas y acotadas, sino estaríamos en un problema de regresión.
+
+  Diferentes tipos de clasificación
+    Clasificación Binaria: 
+      cuando la cantidad de características o etiquetas son dos (por ejemplo, detección de spam en el correo) ?
+    Clasificación Multi-clase: 
+      cuando la cantidad de características o etiquetas son más de dos (por ejemplo, detección de frutas)
+    Clasificación Multi-etiqueta: 
+      cuando los individuos pueden tener más de una etiqueta o característica (por ejemplo, características de una foto: (sepia/color, día/noche, ...)
+
+  Resultado de las predicciones:
+    True positives TF (Positivos Verdaderos): 
+      casos en los cuales la clase C predicha coincide con la real
+    False positives FP (Positivos Falsos): 
+      casos en los cuales la clase C predicha no coincide con la clase del individuo correspondiente
+    True negatives TN(Negativos Verdaderos): 
+      casos en los cuales la clase predicha no es C, y efectivamente los individuos correspondientes no son de clase C
+    False negatives FN(Negativos Falsos): 
+      casos en los cuales la clase predicha por el clasi cador no es C, pero los individuos correspondientes corresponden a la clase C.
+
+  Exactitud (Accuracy):
+    (correstos: falsos y verdaderos) / todos
+    Es una métrica muy simple ¿ cuántos clasifica correctamente ?
+
+  Precision (Precisión): 
+    De todos los casos que el modelo predijo como positivos, ¿cuántos realmente eran positivos? (con abilidad)
+
+  Recall (Exhaustividad):  
+    De todos los casos que realmente eran positivos, ¿cuántos detectó el modelo correctamente? (detección)
+
+  F1-Score: 
+    (presicion*recall) / (presicion+recall)
+    Sirve cuando queremos balancear falsos positivos y falsos negativos.
+
+  clasificacion lineal:
+    Los casos más simples de clasi cación es la clasi cación lineal. Donde buscamos aprender una función lineal que nos divida el conjunto de elementos según la clase a la que pertenece. A esta función se la denomina decision boundary (frontera de decisión) o separador lineal.
+
+  Perceptron:
+    Calcula una suma ponderada por pesos, y aplica una función de activación al resultado, Si resultado es superior a un umbral, retorna 1, sino 0
+
+    El bias en el perceptrón es un parámetro adicional que permite desplazar la frontera de decisión y mejorar la capacidad de aprendizaje del modelo.
+
+  Logistic Regression:
+    en vez de calcular si pertenece o no a una clase (discreto) es calcular la probabilidad de que pertenezca. Para ello utilizamos un función Sigmoide (en forma de “S”).
+
+    Log Loss (pérdida logarítmica): 
+      Funcion de costo muy utilizada en logistic regression para el entrenamiento. Ésta mide cuán bien se ajustan la probabilidad predicha respecto de la clase real (valor correcto). La pérdida logarítmica se calcula como el promedio negativo del logaritmo de las probabilidades predichas, teniendo en cuenta tanto las predicciones correctas como las incorrectas.
+      Una ventaja de Logistic Regression es que la función de decisión es diferenciable, con lo cual podemos aplicar la técnica del descenso del gradiente para encontrar los parámetros que minimizan el error de predicción.
+
+    Multi-clase:
+      Enfoque One-vs-the-Rest (OvR):
+        Entrenar un clasi cador por cada clase y seleccionamos como clase resultante aquella con valor más alto (mayor probabilidad)
+
+      Enfoque One-vs-One (OvO):
+        Entrenar un clasi cador para distinguir cada par de clase. Se genera y entrenan muchos clasi cadores N * (N − 1)/2 para N clases y se retorna como resultado de la predicción la clase que gana más "comparaciones" (más veces vs. las restantes).
+
+      regresión softmax (softmax regression): 
+        O regresión logística multinomial (multinomial logistic regression) es una tecnica para manejar múltiples clases directamente, sin la necesidad de entrenar y combinar varios clasificadores binarios
+        La idea es que cuando llega una instancia x a ser clasificada k El modelo calcula un score sk(x) para cada clase k. Este score es parecido a la regresión logística tradicional, es un valor linea. Luego, aplica la función softmax (también llamada exponencial normalizada) para convertir esos scores en probabilidades.
+        La idea es que todas las probabilidades quedan entre 0 y 1, y suman exactamente 1. La clase a predecir será la que tenga la probabilidad más alta.
+
+        función de costo de entropía cruzada (cross-entropy loss):
+          funcion de costo de entranamiento en modelo softmax el cual debe asignar alta probabilidad a la clase correcta y baja probabilidad a las Además. Como la función de costo de entropía cruzada (cross-entropy loss) es diferenciable, para realizar el entrenamiento podemos aplicar la técnica del descenso del gradiente para ir ajustando los pesos asociados a cada clase.
