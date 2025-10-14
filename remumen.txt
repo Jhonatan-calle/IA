@@ -268,3 +268,46 @@
   Voting: 
     Se seleccionan diferentes tipos de modelos con buen desempeño. Se entrenan cada uno de los correspondientes modelos. Dada una consulta, se realiza la misma en cada modelo entrenado. Dadas las respuestas se somete a un proceso de votación. Para problemas de clasi cación se utiliza mayority, para uno de regresión, generalmente el promedio de los resultados. También se puede utilizar una soft voting utilizando probabilidades
 
+
+------TEO 7 redes neuronales
+
+  Perceptron con respuesta probabilística:
+    Con el mismo objetivo que para clasi cación, en lugar de utilizar una decisión discreta (>0,<=0), utilizamos una función que nos proyecte la salida en una probabilidad en 0 y 1.
+
+  Combinando varios perceptrones (neuronas) podemos crear una Red Neuronal
+
+  red neuronal artificial(ANN):
+    es un modelo computacional compuesto por unidades llamadas neuronas arti ciales, organizadas en capas (entrada, ocultas y salida), que están conectadas entre sí mediante pesos.
+
+  backprogration 
+    metodo de entranmiento de una red neuroanl. mediante el gradiente de la funcion de costo 
+
+
+------TEO 8 redes convulcionales 
+  
+  Una Red Neuronal Convolucional (CNN) es un tipo de red neuronal diseñada para procesar datos con estructura espacial, como imágenes.
+
+  convulcion:
+    Una convolución es una operación que combina dos funciones f y g para producir una tercera función que expresa cómo una de ellas modifica o “suaviza” a la otra. Si asociamos a la función f representando el dato de entrada y la segunda g como el patrón a detectar, la convolución modi ca la entrada proyectando el patrón sobre ella. Imaginemos dos secuencias de números.
+
+  En dos dimensiones se denormina filtro o kernel a la funcion g que es aplicada a f y el parametro strike o salto indica cuánto se desplaza el kernel en la entrada durante la convolución
+
+  Si necesitamos atención en los bordes podemos rellenar los bordes (padding)
+
+  pooling:
+    Las capas de pooling tienen como objetivo reducir el tamaño de los mapas de características conservando la información más importante. Para ello resume regiones (por ejemplo, de 2×2) tomando el valor máximo (max-pooling) o el promedio (average pooling). Este proceso disminuye la cantidad de parámetros, hace el modelo más e ciente y genera invariancia a pequeñas traslaciones o deformaciones.
+
+  Data Augmentation (aumento de datos):
+    tecnica a la que se puede recurrir para mejorar la generalizacion del modelo cuando la cantidad y calidad de los datos no es suficiente respecto a diversidad. Data Augmentation genera nuevas imágenes arti ciales aplicando transformaciones aleatorias que no cambian la clase del objeto
+
+  Ventajas CNN :
+    Sparse Interactions (Interacciones dispersas o locales):
+      En una convolucional, cada neurona de la salida se conecta solo con una pequeña región local de la entrada, el receptive eld (campo receptivo). Esto genera interacciones dispersas, lo que reduce drásticamente los parámetros y el costo computacional. Esta “dispersión” permite que la red se concentre en patrones locales (bordes, texturas, esquinas) antes de combinarlos en niveles más altos para detectar formas globales.
+
+    Parameter Sharing (Compartición de parámetros) :
+      En una ANN tradicional, cada conexión tiene su propio peso wij. En cambio en una convolucional, el mismo conjunto de pesos (el filtro o kernel) se aplica a lo largo de toda la entrada. Los pesos se comparten en todas las posiciones (i, j), lo que significa que el número de parámetros no depende del tamaño de la entrada. La red aprende un ltro universal que detecta la misma característica (por ejemplo, un borde) en cualquier lugar de dato de entrada. Esto permite que la red sea invariante a traslaciones: un patrón desplazado produce la misma respuesta
+
+    Equivariance to Translation and Variable-Sized Inputs (Equivarianza e invariancia):
+      Una operación es equivariante si un cambio en la entrada produce un cambio correspondiente en la salida. En una convolución: f(T(x)) = T(f(x)) donde T representa una traslación (desplazamiento). Esto significa que si desplazamos la imagen de entrada, el mapa de características se desplaza de la misma forma.
+      Además, se puede trabajar con entradas de tamaño variable, porque el filtro convolucional opera localmente y no depende de la dimensión total de la entrada. Las capas de pooling y global average pooling permiten reducir las dimensiones antes de la capa de salida, independientemente del tamaño de entrada original.
+
