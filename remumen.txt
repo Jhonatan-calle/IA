@@ -11,8 +11,8 @@
 
   Metodos de selecion mas comunes
     -selecion por ruleta (FPS): cada individuo tiene una probabilidad de ser elegido proporcional a su aptitud, como si ocupara una porción de una ruleta cuyo tamaño depende de su valor de aptitud.
-    -En el muestreo universal estocástico (SUS): se hace un solo giro de la ruleta y se seleccionan varios individuos a la vez usando puntos de selección equidistantes.
-    -Escalado de aptitud: transforma los valores originales de aptitud mediante una función lineal tness escalada = a * tness + b para ajustarlos a un rango deseado.
+    -muestreo universal estocástico (SUS): se hace un solo giro de la ruleta y se seleccionan varios individuos a la vez usando puntos de selección equidistantes.
+    -Escalado de aptitud: transforma los valores originales de aptitud mediante una función lineal fitness escalada = a * tness + b para ajustarlos a un rango deseado.
     -En la selección por torneo, se eligen al azar dos o más individuos de la población, y el que tenga la mayor aptitud es el que resulta seleccionado.
 
   Metodos de crossover mas usados 
@@ -151,7 +151,7 @@
     True negatives TN(Negativos Verdaderos): 
       casos en los cuales la clase predicha no es C, y efectivamente los individuos correspondientes no son de clase C
     False negatives FN(Negativos Falsos): 
-      casos en los cuales la clase predicha por el clasi cador no es C, pero los individuos correspondientes corresponden a la clase C.
+      casos en los cuales la clase predicha por el clasificador no es C, pero los individuos correspondientes corresponden a la clase C.
 
   Exactitud (Accuracy):
     (correstos: falsos y verdaderos) / todos
@@ -184,14 +184,14 @@
 
     Multi-clase:
       Enfoque One-vs-the-Rest (OvR):
-        Entrenar un clasi cador por cada clase y seleccionamos como clase resultante aquella con valor más alto (mayor probabilidad)
+        Entrenar un clasificador por cada clase y seleccionamos como clase resultante aquella con valor más alto (mayor probabilidad)
 
       Enfoque One-vs-One (OvO):
-        Entrenar un clasi cador para distinguir cada par de clase. Se genera y entrenan muchos clasi cadores N * (N − 1)/2 para N clases y se retorna como resultado de la predicción la clase que gana más "comparaciones" (más veces vs. las restantes).
+        Entrenar un clasificador para distinguir cada par de clase. Se genera y entrenan muchos clasificadores N * (N − 1)/2 para N clases y se retorna como resultado de la predicción la clase que gana más "comparaciones" (más veces vs. las restantes).
 
       regresión softmax (softmax regression): 
         O regresión logística multinomial (multinomial logistic regression) es una tecnica para manejar múltiples clases directamente, sin la necesidad de entrenar y combinar varios clasificadores binarios
-        La idea es que cuando llega una instancia x a ser clasificada k El modelo calcula un score sk(x) para cada clase k. Este score es parecido a la regresión logística tradicional, es un valor linea. Luego, aplica la función softmax (también llamada exponencial normalizada) para convertir esos scores en probabilidades.
+        La idea es que cuando llega una instancia x a ser clasificada. El modelo calcula un score sk(x) para cada clase k. Este score es parecido a la regresión logística tradicional, es un valor linea. Luego, aplica la función softmax (también llamada exponencial normalizada) para convertir esos scores en probabilidades.
         La idea es que todas las probabilidades quedan entre 0 y 1, y suman exactamente 1. La clase a predecir será la que tenga la probabilidad más alta.
 
         función de costo de entropía cruzada (cross-entropy loss):
@@ -200,7 +200,7 @@
 
 ------TEO 5 clasificación no parametrica
 |
-  En machine learning, un modelo no paramétrico es aquel que no asume una forma funcional ja para los datos (como una recta o un polinomio). Además, en general, la complejidad del modelo crece con la cantidad de datos.
+  En machine learning, un modelo no paramétrico es aquel que no asume una forma funcional para los datos (como una recta o un polinomio). Además, en general, la complejidad del modelo crece con la cantidad de datos.
   
   k-Nearest Neighbors (k-NN): 
     Predice según los vecinos más cercanos en el espacio de características. almacena los datos de entrenamiento para buscar los k vecinos más cercanos al nuevo punto de entrada para predecir su valor.
@@ -223,7 +223,7 @@
       • Buen rendimiento en alta dimensión: Funciona muy bien con datos de muchas variables,por ejemplo imágenes.
       • Manejo de relaciones no lineales: Gracias a los kernels (RBF, polinómico).
       • Robustez frente a outliers: El soft margin permite ignorar ciertos puntos atípicos.
-      • Clasi cación binaria y multiclase: Útil tanto para dos clases como para múltiples clases.
+      • Clasificación binaria y multiclase: Útil tanto para dos clases como para múltiples clases.
 
     Desventajas
       • Entrenamiento lento: Muy costoso en datasets grandes.
@@ -235,7 +235,7 @@
   Árboles de decisión (DT):
     Su objetivo es construir un modelo que prediga el valor de una variable objetivo mediante reglas de decisión simples derivadas de las características de los datos.
 
-    ¿ Cómo podemos construir (aprender) un DT ?... de una forma optimal. La construcción del mejor DT (más e ciente) es un problema NP completo.
+    ¿ Cómo podemos construir (aprender) un DT ?... de una forma optimal. La construcción del mejor DT (más eficiente) es un problema NP completo.
 
     Índice Gini (para clasificación): 
       El coe ciente gini mide la “pureza” de un nodo. Un nodo se dice “puro” (gini=0)si contiene todas muestras del mismo tipo
@@ -260,19 +260,19 @@
     Random Forest es un algoritmo de ensemble basado en bagging que combina múltiples árboles de decisión para mejorar la precisión y la capacidad de generalización. Fue propuesto por Leo Breiman en 2001 como una extensión del bagging, con la innovación de agregar aleatoriedad en la selección de atributos en cada división del árbol.
     
   Boosting:  
-    Boosting es una técnica que combina múltiples modelos débiles (weak learners) para formar un modelo fuerte (strong learner). La idea es entrenar de manera secuencial a varios modelos, donde cada modelo nuevo se enfoca en corregir los errores cometidos por los anteriores. En lugar de entrenar todos los modelos en paralelo (como en bagging), los modelos se construyen uno tras otro ajustando la importancia de las instancias según la di cultad de clasi carlas.
+    Boosting es una técnica que combina múltiples modelos débiles (weak learners) para formar un modelo fuerte (strong learner). La idea es entrenar de manera secuencial a varios modelos, donde cada modelo nuevo se enfoca en corregir los errores cometidos por los anteriores. En lugar de entrenar todos los modelos en paralelo (como en bagging), los modelos se construyen uno tras otro ajustando la importancia de las instancias según la di cultad de clasificarlas.
 
   Stacking (Stacked Generalization): 
     Combina diferentes tipos de modelos (heterogéneos). Usa un meta-modelo que aprende a integrar sus predicciones. Ejemplo: usar k-NN + SVM + árbol de decisión, y luego una regresión logística para combinar. A diferencia de Bagging o Boosting, que combinan modelos de la misma familia.
 
   Voting: 
-    Se seleccionan diferentes tipos de modelos con buen desempeño. Se entrenan cada uno de los correspondientes modelos. Dada una consulta, se realiza la misma en cada modelo entrenado. Dadas las respuestas se somete a un proceso de votación. Para problemas de clasi cación se utiliza mayority, para uno de regresión, generalmente el promedio de los resultados. También se puede utilizar una soft voting utilizando probabilidades
+    Se seleccionan diferentes tipos de modelos con buen desempeño. Se entrenan cada uno de los correspondientes modelos. Dada una consulta, se realiza la misma en cada modelo entrenado. Dadas las respuestas se somete a un proceso de votación. Para problemas de clasificación se utiliza mayority, para uno de regresión, generalmente el promedio de los resultados. También se puede utilizar una soft voting utilizando probabilidades
 
 
 ------TEO 7 redes neuronales
 
   Perceptron con respuesta probabilística:
-    Con el mismo objetivo que para clasi cación, en lugar de utilizar una decisión discreta (>0,<=0), utilizamos una función que nos proyecte la salida en una probabilidad en 0 y 1.
+    Con el mismo objetivo que para clasificación, en lugar de utilizar una decisión discreta (>0,<=0), utilizamos una función que nos proyecte la salida en una probabilidad en 0 y 1.
 
   Combinando varios perceptrones (neuronas) podemos crear una Red Neuronal
 
@@ -283,19 +283,19 @@
     metodo de entranmiento de una red neuroanl. mediante el gradiente de la funcion de costo 
 
 
-------TEO 8 redes convulcionales 
+------TEO 8 redes convolucionales 
   
   Una Red Neuronal Convolucional (CNN) es un tipo de red neuronal diseñada para procesar datos con estructura espacial, como imágenes.
 
-  convulcion:
-    Una convolución es una operación que combina dos funciones f y g para producir una tercera función que expresa cómo una de ellas modifica o “suaviza” a la otra. Si asociamos a la función f representando el dato de entrada y la segunda g como el patrón a detectar, la convolución modi ca la entrada proyectando el patrón sobre ella. Imaginemos dos secuencias de números.
+  convolucion:
+    Una convolución es una operación que combina dos funciones f y g para producir una tercera función que expresa cómo una de ellas modifica o “suaviza” a la otra. Si asociamos a la función f representando el dato de entrada y la segunda g como el patrón a detectar, la convolución modifica la entrada proyectando el patrón sobre ella
 
   En dos dimensiones se denormina filtro o kernel a la funcion g que es aplicada a f y el parametro strike o salto indica cuánto se desplaza el kernel en la entrada durante la convolución
 
   Si necesitamos atención en los bordes podemos rellenar los bordes (padding)
 
   pooling:
-    Las capas de pooling tienen como objetivo reducir el tamaño de los mapas de características conservando la información más importante. Para ello resume regiones (por ejemplo, de 2×2) tomando el valor máximo (max-pooling) o el promedio (average pooling). Este proceso disminuye la cantidad de parámetros, hace el modelo más e ciente y genera invariancia a pequeñas traslaciones o deformaciones.
+    Las capas de pooling tienen como objetivo reducir el tamaño de los mapas de características conservando la información más importante. Para ello resume regiones (por ejemplo, de 2×2) tomando el valor máximo (max-pooling) o el promedio (average pooling). Este proceso disminuye la cantidad de parámetros, hace el modelo más eficiente y genera invariancia a pequeñas traslaciones o deformaciones.
 
   Data Augmentation (aumento de datos):
     tecnica a la que se puede recurrir para mejorar la generalizacion del modelo cuando la cantidad y calidad de los datos no es suficiente respecto a diversidad. Data Augmentation genera nuevas imágenes arti ciales aplicando transformaciones aleatorias que no cambian la clase del objeto

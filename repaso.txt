@@ -1,4 +1,53 @@
 -------- Geneticos
 
-Metodos de selecion mas comunes 
+Metodos de selecion mas comunes (se mensionan 4)
+Metodos de crossover mas usados (se mensionan 3)
+Que es Moga
+Que significa que solución A domina a otra solución B
+Algoritmo Non-dominated Sorting Genetic II (NSGA-2)
+
+-------- regresion
+
+Underfutting, Overfitting
+Metricas de calidad: 
+  clasficiacion(son 4)
+  prediccion(se mensionan 2)
+Validación cruzada (cross-validation):
+Regresion polinomial
+Como se interpretan las curvas de aprendizaje 
+error de generalizacion de un modelo : sesgo, varianza, error irreducible
+Regularizacion:  (hay 3 y ademas del earlyStop)
+
+-------- clasificacion parametrica
+
+Tipos de clasificacion 
+Regression Logistica: como se entrena el modelo 
+clasificacion multiclases (one vs rest, one vs one, softmax)
+
+-------- clasificacion no parametrica
+
+como funciona k-Nearest Neighbors (k-NN)
+  cual es la media y variacion estandar ideal que deben comparti los paramtros 
+Que son las maquinas de soporte vectorial 
+  SVM - Soft Margin 
+que es un arbol de decisión (DT)
+  indece Gini 
+  pruning: que es y para que
+    pre y pos pruning
+
+
+-------- ensambles
+  
+  que es bagging. ejemplo
+  boosting 
+  Stackinga
+  Voting (tipos de votacion)
+
+
+-------- redes convolucionales
+  que es una convolucion
+  pooling 
+  Data Augmentation
+  ventajas de CNN (son 3)
+
 
