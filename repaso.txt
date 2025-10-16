@@ -1,34 +1,34 @@
 -------- Geneticos
 
-Metodos de selecion mas comunes (se mensionan 4)
-Metodos de crossover mas usados (se mensionan 3)
+Metodos de selecion mas comunes (se mensionan 4)  /
+Metodos de crossover mas usados (se mensionan 3) /
 Que es Moga
 Que significa que solución A domina a otra solución B
 Algoritmo Non-dominated Sorting Genetic II (NSGA-2)
 
 -------- regresion
 
-Underfutting, Overfitting
+Underfitting, Overfitting
 Metricas de calidad: 
-  clasficiacion(son 4)
+  clasficiacion(son 4) /
   prediccion(se mensionan 2)
 Validación cruzada (cross-validation):
 Regresion polinomial
 Como se interpretan las curvas de aprendizaje 
 error de generalizacion de un modelo : sesgo, varianza, error irreducible
-Regularizacion:  (hay 3 y ademas del earlyStop)
+Regularizacion:  (hay 3 y ademas del earlyStop) /
 
 -------- clasificacion parametrica
 
-Tipos de clasificacion 
-Regression Logistica: como se entrena el modelo 
-clasificacion multiclases (one vs rest, one vs one, softmax)
+Tipos de clasificacion  /
+Regression Logistica: como se entrena el modelo  /
+clasificacion multiclases (one vs rest, one vs one, softmax) /
 
 -------- clasificacion no parametrica
 
 como funciona k-Nearest Neighbors (k-NN)
-  cual es la media y variacion estandar ideal que deben comparti los paramtros 
-Que son las maquinas de soporte vectorial 
+  cual es la media y variacion estandar ideal que deben comparti los paramtros /
+Que son las maquinas de soporte vectorial (support vector machine) /
   SVM - Soft Margin 
 que es un arbol de decisión (DT)
   indece Gini 
@@ -37,7 +37,7 @@ que es un arbol de decisión (DT)
 
 
 -------- ensambles
-  
+
   que es bagging. ejemplo
   boosting 
   Stackinga
@@ -45,9 +45,11 @@ que es un arbol de decisión (DT)
 
 
 -------- redes convolucionales
+
   que es una convolucion
+  padding y strike
   pooling 
   Data Augmentation
-  ventajas de CNN (son 3)
+  ventajas de CNN (son 3) /
 
 
