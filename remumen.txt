@@ -214,7 +214,7 @@
   Para determinar el valor a predecir (clase) el método más utilizado es el de votación mayoritaria entre las clases de los vecinos.
 
   Maquinas de soporte vectorial (SVM):
-    La idea de SVM es tratar de encontrar cuál es la mejor forma de partir (separar) clases de valores para poder clasificarlos
+    La idea de SVM es tratar de encontrar cuál es la mejor forma de partir (separar) clases de valores para poder clasificarlos. es casi igual que clasificacion lineal pero ademas es mas robusta. es una mejora ya que no solo calcula la frontera sino qe ademas permite ruido y cierto grado de tolerancio y ademas es la major (mejor distacia)
 
     SVM - Soft Margin:
       El soft margin permite que algunos puntos estén mal clasificados o dentro del margen, con el objetivo de obtener un modelo que generalice mejor. Esto se logra introduciendo slack variables, que miden cuántos puntos “violan” la separación correcta.
@@ -282,6 +282,31 @@
   backprogration 
     metodo de entranmiento de una red neuroanl. mediante el gradiente de la funcion de costo 
 
+  funciones de activacion:
+
+    sigmoide
+      Rango: (0, 1). Ventajas: útil en probabilidades binarias. Generalmente se utiliza capa de salida en clasi cación binaria.
+
+    Tanh (Tangente hiperbólica):
+      Rango: (-1, 1). Ventajas: centrada en 0 (mejora convergencia respecto a sigmoide). También sufre vanishing gradient.
+
+    ReLU (Recti ed Linear Unit): f(x) = max(0,x)
+      Rango: [0, ∞). Ventajas: computación sencilla, evita saturación en parte positiva. Desventaja: dying ReLU (neuronas se apagan si reciben valores negativos constantemente). Generalmente se utilizan capas ocultas en redes profundas.
+
+    Leaky ReLU:
+      Introduce una pendiente pequeña en valores negativos (ej. α=0.01). Evita el problema de dying ReLU.
+
+    Softmax:
+      Convierte un vector de scores en una distribución de probabilidad. Rango: (0,1) y suma total = 1. Se utiliza generalmente en la capa de salida en clasificación multiclase.
+
+    ELU (Exponential Linear Unit): 
+      similar a ReLU pero suaviza la parte negativa.
+
+    Swish:
+      Mejora suavidad y propagación de gradientes. Generalmente utilizada en transformes y CNN.
+
+    GELU (Gaussian Error Linear Unit):
+      variante más avanzada de ReLU usada enTransformers. Funciona mejor en modelos grandes, muy utilizada en NLP.
 
 ------TEO 8 redes convolucionales 
   
